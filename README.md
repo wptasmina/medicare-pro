@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Medicare Pro – Frontend
 
-First, run the development server:
+**Medicare Pro** is a SaaS-based medical platform where **Admins** manage **Doctors**,
+and **Doctors** manage their **Assistants**. This is the frontend built 
+using **Next.js**, **TypeScript**, and **Tailwind CSS**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌐 Live Preview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Link | Description |
+|------|-------------|
+| [Live Site](https://medicare-pro-rust.vercel.app) | Deployed frontend app |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📁 Folder Structure
 
-To learn more about Next.js, take a look at the following resources:
+| Folder/File         | Description                                |
+|---------------------|--------------------------------------------|
+| `app/`              | App Router pages for admin, doctor, auth   |
+| `components/`       | Reusable UI and shared components          |
+| `lib/`              | Utility functions                          |
+| `store/`            | Redux Toolkit store and slices             |
+| `styles/`           | Global styles (Tailwind)                   |
+| `public/`           | Public assets                              |
+| `types/`            | TypeScript types                           |
+| `next.config.js`    | Next.js configuration                      |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ✅ Features
 
-## Deploy on Vercel
+### 🛡️ Admin Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Feature                     | Description                                  |
+|-----------------------------|----------------------------------------------|
+| Admin Login                 | Login using email & password                 |
+| Add Doctor                  | Form with name, email, specialization, etc.  |
+| View Doctors List           | Table of all doctors with subscription info  |
+| Filter & Sort               | By subscription expiry                       |
+| Subscription Overview       | Total doctors, plan status display           |
+| Manage Plans                | Add, edit, delete plans                      |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🧑‍⚕️ Doctor Features
+
+| Feature          | Description                             |
+|------------------|-----------------------------------------|
+| Doctor Login     | Secure login                            |
+| Add Assistant    | Form with name, email, phone            |
+| View Assistants  | List view                               |
+| Edit/Delete      | Assistant update or delete              |
+
+---
+
+## 🧪 API Access
+
+| Resource     | Description                      |
+|--------------|----------------------------------|
+| Base URL     | `https://medicare-pro-backend.vercel.app` |
+| Postman Link | [View Collection](https://www.postman.com/trilia-devshare-team/frontend-task/collection/5g3lx5c/doctor-managements?action=share) |
+
+---
+
+## 🛠️ Tech Stack
+
+| Tech         | Usage                            |
+|--------------|----------------------------------|
+| Next.js      | React framework (App Router)     |
+| TypeScript   | Type safety                      |
+| Tailwind CSS | Styling                          |
+| Redux Toolkit| State management + API slice     |
+| Zod          | Schema validation                |
+| Axios        | HTTP client                      |
+| Vercel       | Deployment                       |
+
+---
+
+## ⚙️ Getting Started
+
+| Step             | Command                                  |
+|------------------|------------------------------------------|
+| Clone Repository | `git clone https://github.com/your-username/medicare-pro-frontend.git` |
+| Install Deps     | `npm install` or `yarn`                  |
+| Run Dev Server   | `npm run dev` or `yarn dev`              |
+
+### 📄 .env.local
+
+```env
+NEXT_PUBLIC_API_BASE_URL=https://medicare-pro-backend.vercel.app
+````
+
+---
+
+## 🏁 Deployment
+
+| Platform | Command                   |
+| -------- | ------------------------- |
+| Vercel   | `vercel` CLI or dashboard |
+
+---
+
+## 📅 Submission Info
+
+| Field      | Detail                                                       |
+| ---------- | ------------------------------------------------------------ |
+| Start Date | 16 June 2025                                                 |
+| Deadline   | 18 June 2025, 11:59 PM (BDT)                                 |
+| Contact    | 📧 [shahisrail134@gmail.com](mailto:shahisrail134@gmail.com) |
+
+---
