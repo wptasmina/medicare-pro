@@ -5,7 +5,6 @@
 and **Doctors** manage their **Assistants**. This is the frontend built 
 using **Next.js**, **TypeScript**, and **Tailwind CSS**.
 
----
 
 ## 🌐 Live Preview
 
@@ -13,7 +12,6 @@ using **Next.js**, **TypeScript**, and **Tailwind CSS**.
 |------|-------------|
 | [Live Site](https://medicare-pro-rust.vercel.app) | Deployed frontend app |
 
----
 
 ## 📁 Folder Structure
 
@@ -28,7 +26,6 @@ using **Next.js**, **TypeScript**, and **Tailwind CSS**.
 | `types/`            | TypeScript types                           |
 | `next.config.js`    | Next.js configuration                      |
 
----
 
 ## ✅ Features
 
@@ -52,7 +49,7 @@ using **Next.js**, **TypeScript**, and **Tailwind CSS**.
 | View Assistants  | List view                               |
 | Edit/Delete      | Assistant update or delete              |
 
----
+
 
 ## 🧪 API Access
 
@@ -61,7 +58,6 @@ using **Next.js**, **TypeScript**, and **Tailwind CSS**.
 | Base URL     | `https://medicare-pro-backend.vercel.app` |
 | Postman Link | [View Collection](https://www.postman.com/trilia-devshare-team/frontend-task/collection/5g3lx5c/doctor-managements?action=share) |
 
----
 
 ## 🛠️ Tech Stack
 
@@ -75,7 +71,6 @@ using **Next.js**, **TypeScript**, and **Tailwind CSS**.
 | Axios        | HTTP client                      |
 | Vercel       | Deployment                       |
 
----
 
 ## ⚙️ Getting Started
 
@@ -91,7 +86,6 @@ using **Next.js**, **TypeScript**, and **Tailwind CSS**.
 NEXT_PUBLIC_API_BASE_URL=https://medicare-pro-backend.vercel.app
 ````
 
----
 
 ## 🏁 Deployment
 
@@ -99,7 +93,6 @@ NEXT_PUBLIC_API_BASE_URL=https://medicare-pro-backend.vercel.app
 | -------- | ------------------------- |
 | Vercel   | `vercel` CLI or dashboard |
 
----
 
 ## 📅 Submission Info
 
