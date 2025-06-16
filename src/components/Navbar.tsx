@@ -9,7 +9,9 @@ const navItems = [
   { href: "/", label: "Home" },
   { href: "/dashboard", label: "Dashboard" },
   { href: "/doctors", label: "Doctors" },
-  { href: "/login", label: "Login" },
+  { href: "/assistants", label: "Assistants" },
+  { href: "/subscriptions", label: "Subscriptions" },
+  { href: "/signin", label: "Login" },
   { href: "/register", label: "Register" },
 ];
 
