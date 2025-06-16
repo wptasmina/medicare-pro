@@ -12,7 +12,7 @@ const navItems = [
   { href: "/assistants", label: "Assistants" },
   { href: "/subscriptions", label: "Subscriptions" },
   { href: "/signin", label: "Login" },
-  { href: "/register", label: "Register" },
+  { href: "/signup", label: "Register" },
 ];
 
 export default function Navbar() {
