@@ -9,10 +9,8 @@ const navItems = [
   { href: "/", label: "Home" },
   { href: "/dashboard", label: "Dashboard" },
   { href: "/doctors", label: "Doctors" },
-  { href: "/assistants", label: "Assistants" },
-  { href: "/subscriptions", label: "Subscriptions" },
   { href: "/signin", label: "Login" },
-  { href: "/signup", label: "Register" },
+
 ];
 
 export default function Navbar() {
