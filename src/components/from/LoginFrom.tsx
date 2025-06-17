@@ -1,8 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Link from "next/link";
 
 type FormValues = {
   email: string;
@@ -16,19 +19,21 @@ export default function LoginForm() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<FormValues>();
 
   const togglePassword = () => setShowPassword(!showPassword);
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const onSubmit = (data: FormValues) => {
     console.log("Form Submitted:", data);
-    alert("Logged in successfully!");
+    toast.success("Login successful!", { position: "top-right" });
+    reset(); 
   };
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="w-full max-w-sm mx-auto p-6 mt-10 bg-white shadow-md rounded-lg"
+      className="w-full max-w-sm mx-auto p-6 my-10 bg-white shadow-md rounded-lg"
     >
       <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
 
@@ -85,6 +90,22 @@ export default function LoginForm() {
       >
         Login
       </button>
+
+         <p className="mt-6 text-sm text-center cursor-pointer">
+          New to <span className="font-bold">Medicare</span>? Click here to
+          <Link className="text-[#022dbb] font-bold ml-1" href={"/signup/admin"}>
+            Register as a admin
+          </Link>
+          or
+          <Link className="text-[#022dbb] font-bold ml-1" href={"/signup/doctor"}>
+            Join as a doctor 
+          </Link> 
+            Or
+          <Link className="text-[#022dbb] font-bold ml-1" href={"/signup/assistants"}>
+            Register as a Assistants
+          </Link>
+          .
+        </p>
     </form>
   );
 }
