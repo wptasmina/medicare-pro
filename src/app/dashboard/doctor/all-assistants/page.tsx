@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Add_Assistant() {
+export default function page() {
   return (
     <div>
-      Add Doctor
+       View All Assistants
     </div>
   )
 }
