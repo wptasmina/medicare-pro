@@ -8,7 +8,7 @@ const apiClient = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
-  withCredentials: true, // Include cookies in requests
+  // withCredentials: true, // Include cookies in requests
 });
 
 // Request interceptor
@@ -32,15 +32,21 @@ apiClient.interceptors.response.use(
   (response) => {
     // Handle successful response here
     if (response.data.token) {
-      localStorage.setItem("token", response.data.token);
+      // Set token in a cookie (client-side)
+      document.cookie = `token=${response.data.token}; path=/;`;
     }
+
+    if (response.data.user) {
+      document.cookie = `user=${JSON.stringify(response.data.user)}; path=/;`;
+    }
+
     return response;
   },
   (error) => {
     // Handle response error here
 
     if (error.response?.status === 401) {
-      localStorage.removeItem("token");
+      document.cookie = `token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
     }
 
     if (error.response) {
@@ -56,3 +62,5 @@ apiClient.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+export default apiClient;
