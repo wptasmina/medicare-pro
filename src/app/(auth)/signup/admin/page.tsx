@@ -27,7 +27,7 @@ export default function AdminSignupForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto p-6 bg-white shadow rounded">
+    <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto my-10 p-6 bg-white shadow rounded">
       <h2 className="text-xl font-bold text-center mb-6">Admin Registration</h2>
 
       <label className="block mb-2">Full Name</label>
