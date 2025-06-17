@@ -5,18 +5,24 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AxiosError } from "axios"; // ✅ add this at the top
 
-type FormValues = {
-  email: string;
-  password: string;
-};
+
+// Zod schema
+const LoginSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+});
+
+type FormValues = z.infer<typeof LoginSchema>;
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
-
   const router = useRouter();
 
   const {
@@ -24,7 +30,9 @@ export default function LoginForm() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormValues>();
+  } = useForm<FormValues>({
+    resolver: zodResolver(LoginSchema),
+  });
 
   const togglePassword = () => setShowPassword(!showPassword);
 
@@ -33,21 +41,23 @@ export default function LoginForm() {
       console.log("Form Submitted:", data);
       await apiClient.post("/auth/login", data);
       toast.success("Login successful!", { position: "top-right" });
-      router.push("/dashboard");
       reset();
-    } catch (error: unknown) {
-      console.error("Login error:", error);
-      toast.error(
-        error.response?.data?.message || "Login failed. Please try again.",
-        { position: "top-right" }
-      );
-    }
-  };
+      router.push("/dashboard");
+    } catch (err) {
+  const error = err as AxiosError<{ message: string }>;
+  console.error("Login error:", error);
+  toast.error(
+    error.response?.data?.message || "Login failed. Please try again.",
+    { position: "top-right" }
+  );
+}
+}
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="w-full max-w-sm mx-auto p-6 my-10 bg-white shadow-md rounded-lg">
+      className="w-full max-w-sm mx-auto p-6 my-10 bg-white shadow-md rounded-lg"
+    >
       <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
 
       {/* Email */}
@@ -59,7 +69,7 @@ export default function LoginForm() {
           id="email"
           type="email"
           placeholder="Enter email"
-          {...register("email", { required: "Email is required" })}
+          {...register("email")}
           className="w-full px-4 py-2 border rounded"
         />
         {errors.email && (
@@ -77,13 +87,14 @@ export default function LoginForm() {
             id="password"
             type={showPassword ? "text" : "password"}
             placeholder="Enter password"
-            {...register("password", { required: "Password is required" })}
+            {...register("password")}
             className="w-full px-4 py-2 border rounded pr-10"
           />
           <button
             type="button"
             onClick={togglePassword}
-            className="absolute top-1/2 right-3 transform -translate-y-1/2">
+            className="absolute top-1/2 right-3 transform -translate-y-1/2"
+          >
             {showPassword ? (
               <FaEyeSlash className="text-gray-500" />
             ) : (
@@ -98,7 +109,8 @@ export default function LoginForm() {
 
       <button
         type="submit"
-        className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition cursor-pointer">
+        className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition cursor-pointer"
+      >
         Signin
       </button>
 
@@ -114,7 +126,8 @@ export default function LoginForm() {
         Or
         <Link
           className="text-[#022dbb] font-bold ml-1"
-          href={"/signup/assistants"}>
+          href={"/signup/assistants"}
+        >
           Register as a Assistants
         </Link>
         .
@@ -122,4 +135,3 @@ export default function LoginForm() {
     </form>
   );
 }
-
