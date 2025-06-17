@@ -1,9 +1,10 @@
-import React from 'react'
+import LoginFrom from "@/components/from/LoginFrom";
+
 
 export default function page() {
   return (
     <div>
-      Login from
+      <LoginFrom/>
     </div>
   )
 }
