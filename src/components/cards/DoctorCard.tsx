@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function page() {
+export default function DoctorCard() {
   return (
     <div>
-      Login from
+      DoctorCard
     </div>
   )
 }
