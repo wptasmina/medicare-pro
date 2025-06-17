@@ -1,5 +1,5 @@
 "use client";
-
+import { AxiosError } from "axios"; 
 import apiClient from "@/lib/axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -35,14 +35,15 @@ export default function LoginForm() {
       toast.success("Login successful!", { position: "top-right" });
       router.push("/dashboard");
       reset();
-    } catch (error: unknown) {
-      console.error("Login error:", error);
-      toast.error(
-        error.response?.data?.message || "Login failed. Please try again.",
-        { position: "top-right" }
-      );
-    }
-  };
+    } catch (err) {
+  const error = err as AxiosError<{ message: string }>;
+  console.error("Login error:", error);
+  toast.error(
+    error.response?.data?.message || "Login failed. Please try again.",
+    { position: "top-right" }
+  );
+}
+}
 
   return (
     <form
