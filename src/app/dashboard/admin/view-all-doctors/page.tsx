@@ -1,9 +1,10 @@
-import React from 'react'
+import AllDoctorsTable from "@/components/Doctors/AllDoctorsTable";
+
 
 export default function page() {
   return (
-    <div>
-      View all doctor add 
-    </div>
+    <section>
+      <AllDoctorsTable />
+    </section>
   )
 }

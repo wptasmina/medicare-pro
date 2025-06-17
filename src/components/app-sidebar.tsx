@@ -43,7 +43,7 @@ const data = {
       roles: ["super_admin"], // admin add roles
       items: [
         { title: "Add Doctor", url: "/dashboard/admin/add-doctor" },
-        { title: "All Doctors", url: "/dashboard/admin/view-all-doctors" },
+        { title: "View All Doctors", url: "/dashboard/admin/view-all-doctors" },
         { title: "Subscriptions Overview", url: "/dashboard/subscriptions-overview" },
         { title: "Add Subscriptions", url: "/subscriptions/add" },
       ],
