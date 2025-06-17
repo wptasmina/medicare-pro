@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
 
 type DoctorFormValues = {
   name: string;
@@ -15,6 +16,7 @@ type DoctorFormValues = {
 
 export default function DoctorSignupForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
 
   const {
     register,
@@ -28,7 +30,12 @@ export default function DoctorSignupForm() {
   const onSubmit = (data: DoctorFormValues) => {
     console.log("Doctor Form Submitted:", data);
     toast.success("Doctor registered successfully!", { position: "top-right" });
-    reset(); // clear form fields
+    reset();
+
+    // navigate to login page
+    setTimeout(() => {
+      router.push("/signin"); 
+    }, 1500);
   };
 
   return (
@@ -109,7 +116,7 @@ export default function DoctorSignupForm() {
 
       <button
         type="submit"
-        className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
+        className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-800 transition cursor-pointer"
       >
         Register as Doctor
       </button>

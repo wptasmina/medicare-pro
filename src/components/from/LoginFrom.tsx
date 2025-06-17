@@ -86,9 +86,9 @@ export default function LoginForm() {
 
       <button
         type="submit"
-        className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+        className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition cursor-pointer"
       >
-        Login
+        Signin
       </button>
 
          <p className="mt-6 text-sm text-center cursor-pointer">
