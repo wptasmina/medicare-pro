@@ -51,7 +51,7 @@ export default function LoginForm() {
     { position: "top-right" }
   );
 }
-}
+  }
 
   return (
     <form

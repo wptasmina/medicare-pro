@@ -31,9 +31,14 @@ apiClient.interceptors.request.use(
 apiClient.interceptors.response.use(
   (response) => {
     // Handle successful response here
+    // if (response?.data?.token) {
+    //   // Set token in a cookie (client-side)
+    //   document.cookie = `token=${response.data.token}; path=/;`;
+    // }
+
     if (response?.data?.token) {
-      // Set token in a cookie (client-side)
-      document.cookie = `token=${response.data.token}; path=/;`;
+      document.cookie = `token=${response?.data?.token}; path=/;`;
+      localStorage.setItem("token", response?.data?.token); 
     }
 
     if (response?.data?.user) {
@@ -50,7 +55,7 @@ apiClient.interceptors.response.use(
     }
 
     if (error.response) {
-      // Server responded with a status other than 2xx
+      // Server responded with a status other than
       console.error("Response error:", error.response?.data);
     } else if (error.request) {
       // Request was made but no response received
