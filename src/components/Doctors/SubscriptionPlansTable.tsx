@@ -16,9 +16,10 @@ interface Plan {
   id: string;
   name: string;
   price: number;
-  duration: string;
+  duration: number; 
   isDefault: boolean;
   isActive: boolean;
+  features: string[];
 }
 
 export default function SubscriptionPlansTable() {

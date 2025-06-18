@@ -69,10 +69,7 @@ export default function AddSubscriptionForm({ plan, onSuccess }: Props) {
           newPlan
         );
       } else {
-        await axios.post(
-          "/admin/plans/create",
-          newPlan
-        );
+        await axios.post("/admin/plans/create", newPlan);
       }
 
       onSuccess?.();
