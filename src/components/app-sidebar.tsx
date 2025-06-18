@@ -44,8 +44,8 @@ const data = {
       items: [
         { title: "Add Doctor", url: "/dashboard/admin/add-doctor" },
         { title: "View All Doctors", url: "/dashboard/admin/view-all-doctors" },
-        { title: "Subscriptions Overview", url: "/dashboard/subscriptions-overview" },
-        { title: "Add Subscriptions", url: "/subscriptions/add" },
+        { title: "Subscriptions Overview", url: "/dashboard/admin/subscriptions-overview" },
+        // { title: "Add Subscriptions", url: "/dashboard/admin//subscriptions/add-new-plan" },
       ],
     },
     {
