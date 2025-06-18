@@ -77,7 +77,7 @@ export default function Page() {
       <Card>
         <CardHeader>
           <CardTitle>Total Doctors</CardTitle>
-          <p className="text-2xl font-bold">{doctorCount === null ? 'Loading...' : doctorCount.length}</p>
+          <p className="text-2xl font-bold">{doctorCount === null ? 'Loading...' : doctorCount}</p>
           <p className="text-sm text-muted-foreground">{recentDoctors} Doctors joined in the last weeks</p>
         </CardHeader>
       </Card>
