@@ -49,7 +49,7 @@ const data = {
       ],
     },
     {
-      title: "Doctor",
+      title: "Doctor Panel",
       url: "/doctor",
       icon: Bot,
       roles: ["doctor"],

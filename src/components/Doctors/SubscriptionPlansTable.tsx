@@ -2,6 +2,16 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+
+
 
 interface Plan {
   id: string;
@@ -70,7 +80,20 @@ export default function SubscriptionPlansTable() {
                   )}
                 </td>
                 <td className="px-4 py-2 text-center">
-                  <button className="text-blue-600 hover:underline mr-3">Edit</button>
+                  <button className="text-blue-600 hover:underline mr-3">
+                  <Dialog>
+                    <DialogTrigger>Edit</DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Are you absolutely sure?</DialogTitle>
+                        <DialogDescription>
+                          This action cannot be undone. This will permanently delete your account
+                          and remove your data from our servers.
+                        </DialogDescription>
+                      </DialogHeader>
+                    </DialogContent>
+                  </Dialog>
+                  </button>
                   <button className="text-red-600 hover:underline">Delete</button>
                 </td>
               </tr>
