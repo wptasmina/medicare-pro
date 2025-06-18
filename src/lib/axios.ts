@@ -3,62 +3,69 @@ import axios from "axios";
 const baseURL = "https://medicare-pro-backend.vercel.app";
 
 const apiClient = axios.create({
-  baseURL: baseURL + "/api/v1",
+  baseURL: `${baseURL}/api/v1`,
   timeout: 10000, // 10 seconds
   headers: {
     "Content-Type": "application/json",
   },
-  // withCredentials: true, // Include cookies in requests
 });
 
-// Request interceptor
+// Request interceptor: Attach token from localStorage if available
 apiClient.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token"); // Replace 'token' with your token key
-
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+    // Only run on client-side (avoid SSR issues)
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("token");
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
     }
     return config;
   },
   (error) => {
-    // Handle request error here
     return Promise.reject(error);
   }
 );
 
-// Response interceptor
+// Response interceptor: Handle tokens and errors
 apiClient.interceptors.response.use(
   (response) => {
-    // Handle successful response here
-    if (response.data.token) {
-      // Set token in a cookie (client-side)
-      document.cookie = `token=${response.data.token}; path=/;`;
+    // Store token and user data if received
+    if (typeof window !== "undefined") {
+      if (response.data.token) {
+        localStorage.setItem("token", response.data.token); // Primary token storage
+        document.cookie = `token=${response.data.token}; path=/;`; // Fallback
+      }
+      if (response.data.user) {
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        document.cookie = `user=${JSON.stringify(response.data.user)}; path=/;`;
+      }
     }
-
-    if (response.data.user) {
-      document.cookie = `user=${JSON.stringify(response.data.user)}; path=/;`;
-    }
-
     return response;
   },
   (error) => {
-    // Handle response error here
-
-    if (error.response?.status === 401) {
-      document.cookie = `token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+    // Handle 401 Unauthorized errors
+    if (typeof window !== "undefined") {
+      if (error.response?.status === 401) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        document.cookie = "user=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      }
     }
 
+    // Enhanced error logging
     if (error.response) {
-      // Server responded with a status other than 2xx
-      console.error("Response error:", error.response.data);
+      console.error("API Error:", {
+        status: error.response.status,
+        data: error.response.data,
+      });
     } else if (error.request) {
-      // Request was made but no response received
       console.error("No response received:", error.request);
     } else {
-      // Something else caused the error
-      console.error("Error:", error.message);
+      console.error("Request setup error:", error.message);
     }
+
     return Promise.reject(error);
   }
 );

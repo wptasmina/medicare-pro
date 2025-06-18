@@ -44,8 +44,9 @@ const data = {
       items: [
         { title: "Add Doctor", url: "/dashboard/admin/add-doctor" },
         { title: "View All Doctors", url: "/dashboard/admin/view-all-doctors" },
-        { title: "Subscriptions Overview", url: "/dashboard/admin/subscriptions-overview" },
-        // { title: "Add Subscriptions", url: "/dashboard/admin//subscriptions/add-new-plan" },
+        { title: "Subscriptions Overview", url: "/dashboard/admin/subscriptions" },
+        { title: "Add Subscriptions", url: "/dashboard/admin/subscriptions/add-plan" },
+        { title: "All Subscriptions", url: "/dashboard/admin/subscriptions/all-subscriptions" },
       ],
     },
     {
@@ -54,7 +55,7 @@ const data = {
       icon: Bot,
       roles: ["doctor"],
       items: [
-        { title: "Add Assistants", url: "/dashboard/doctor/add-assistants" },
+        { title: "Add Assistants", url: "/dashboard/doctor/assistants" },
         { title: "View All Assistants", url: "/dashboard/doctor/all-assistants" },
         // { title: "Edit", url: "/edit" },
       ],

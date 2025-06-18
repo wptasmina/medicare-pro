@@ -8,23 +8,20 @@ import apiClient from "@/lib/axios";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
 
-// All 15 subscription options
+// Subscription options
 const subscriptionOptions = [
-  // Monthly Plans
   { value: "monthly-basic", label: "Monthly Basic – $5 (30 days)" },
   { value: "monthly-standard", label: "Monthly Standard – $9 (30 days)" },
   { value: "monthly-premium", label: "Monthly Premium – $12 (30 days)" },
   { value: "monthly-pro", label: "Monthly Pro – $15 (30 days)" },
   { value: "monthly-unlimited", label: "Monthly Unlimited – $20 (30 days)" },
 
-  // Yearly Plans
   { value: "yearly-basic", label: "Yearly Basic – $49 (365 days)" },
   { value: "yearly-standard", label: "Yearly Standard – $79 (365 days)" },
   { value: "yearly-premium", label: "Yearly Premium – $99 (365 days)" },
   { value: "yearly-pro", label: "Yearly Pro – $129 (365 days)" },
   { value: "yearly-unlimited", label: "Yearly Unlimited – $149 (365 days)" },
 
-  // Daily Plans
   { value: "daily-basic", label: "Daily Basic – $1 (1 day)" },
   { value: "daily-standard", label: "Daily Standard – $2 (1 day)" },
   { value: "daily-premium", label: "Daily Premium – $3 (1 day)" },
@@ -32,30 +29,33 @@ const subscriptionOptions = [
   { value: "daily-unlimited", label: "Daily Unlimited – $5 (1 day)" },
 ];
 
-// Zod schema using union of string literals
+// Zod schema for validation
 const AddDoctorSchema = z.object({
   name: z.string().min(2, "Name is required"),
   email: z.string().email("Invalid email"),
   specialization: z.string().min(2, "Specialization is required"),
-  subscriptionPlan: z.enum([
-    "monthly-basic",
-    "monthly-standard",
-    "monthly-premium",
-    "monthly-pro",
-    "monthly-unlimited",
-    "yearly-basic",
-    "yearly-standard",
-    "yearly-premium",
-    "yearly-pro",
-    "yearly-unlimited",
-    "daily-basic",
-    "daily-standard",
-    "daily-premium",
-    "daily-pro",
-    "daily-unlimited",
-  ], {
-    required_error: "Subscription plan is required",
-  }),
+  subscriptionPlan: z.enum(
+    [
+      "monthly-basic",
+      "monthly-standard",
+      "monthly-premium",
+      "monthly-pro",
+      "monthly-unlimited",
+      "yearly-basic",
+      "yearly-standard",
+      "yearly-premium",
+      "yearly-pro",
+      "yearly-unlimited",
+      "daily-basic",
+      "daily-standard",
+      "daily-premium",
+      "daily-pro",
+      "daily-unlimited",
+    ],
+    {
+      required_error: "Subscription plan is required",
+    }
+  ),
 });
 
 type AddDoctorFormValues = z.infer<typeof AddDoctorSchema>;
@@ -75,7 +75,7 @@ export default function AddDoctorForm() {
   const onSubmit = async (data: AddDoctorFormValues) => {
     try {
       setLoading(true);
-      await apiClient.get("/doctors", data);
+      await apiClient.post("admin/create-doctor", data);
       toast.success("Doctor added successfully!");
       reset();
     } catch (err) {
@@ -131,7 +131,9 @@ export default function AddDoctorForm() {
           className="w-full border px-4 py-2 rounded"
         />
         {errors.specialization && (
-          <p className="text-red-500 text-sm mt-1">{errors.specialization.message}</p>
+          <p className="text-red-500 text-sm mt-1">
+            {errors.specialization.message}
+          </p>
         )}
       </div>
 
@@ -143,7 +145,9 @@ export default function AddDoctorForm() {
           defaultValue=""
           className="w-full border px-4 py-2 rounded"
         >
-          <option value="" disabled>Select a plan</option>
+          <option value="" disabled>
+            Select a plan
+          </option>
           {subscriptionOptions.map((plan) => (
             <option key={plan.value} value={plan.value}>
               {plan.label}
@@ -151,7 +155,9 @@ export default function AddDoctorForm() {
           ))}
         </select>
         {errors.subscriptionPlan && (
-          <p className="text-red-500 text-sm mt-1">{errors.subscriptionPlan.message}</p>
+          <p className="text-red-500 text-sm mt-1">
+            {errors.subscriptionPlan.message}
+          </p>
         )}
       </div>
 

@@ -84,7 +84,7 @@ export default function Page() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Total Patients</CardTitle>
+          <CardTitle>Total Users</CardTitle>
           <p className="text-2xl font-bold">14,685</p>
           <p className="text-sm text-green-500">1.3% Up from past week</p>
         </CardHeader>
@@ -92,7 +92,7 @@ export default function Page() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Total Transactions</CardTitle>
+          <CardTitle>Active Subscriptions</CardTitle>
           <p className="text-2xl font-bold">$89,000</p>
           <p className="text-sm text-red-500">4.3% Down from yesterday</p>
         </CardHeader>
@@ -100,27 +100,18 @@ export default function Page() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Total Appointments</CardTitle>
+          <CardTitle>Expiring (7 Days)</CardTitle>
           <p className="text-2xl font-bold">1,460</p>
           <p className="text-sm text-green-500">1.8% Up from yesterday</p>
         </CardHeader>
       </Card>
 
-      <Card className="">
-        <CardHeader>
-          <CardTitle>Reported Cases</CardTitle>
-        </CardHeader>
-        <CardContent>
-          {/* <Line data={lineData} /> */}
-        </CardContent>
-      </Card>
-
       <Card>
         <CardHeader>
-          <CardTitle>Most Visited Dept.</CardTitle>
+          <CardTitle>Expired</CardTitle>
         </CardHeader>
         <CardContent>
-          {/* <Pie data={pieData} /> */}
+          <p className="text-2xl font-bold">0</p>
         </CardContent>
       </Card>
     </div>

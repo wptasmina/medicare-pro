@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function AssistantCard() {
+export default function page() {
   return (
     <div>
-      AssistantCard
+      all subscriptions
     </div>
   )
 }

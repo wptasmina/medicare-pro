@@ -70,7 +70,7 @@ export default function AddSubscriptionForm({ plan, onSuccess }: Props) {
         );
       } else {
         await axios.post(
-          "https://medicare-pro-backend.vercel.app/api/plans",
+          "/admin/plans/create",
           newPlan
         );
       }

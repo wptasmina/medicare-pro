@@ -1,10 +1,11 @@
+import AssistantsManager from "@/components/Doctors/AssistantsManager";
 
-import AllAssistantsTable from '@/components/Doctors/AllAssistantsTable';
+
 
 export default function page() {
   return (
     <div>
-      <AllAssistantsTable/>
+      <AssistantsManager/>
     </div>
   )
 }
