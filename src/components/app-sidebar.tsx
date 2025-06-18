@@ -55,7 +55,7 @@ const data = {
       roles: ["doctor"],
       items: [
         { title: "Add Assistants", url: "/dashboard/doctor/add-assistants" },
-        { title: "Assistants", url: "/dashboard/doctor/all-assistants" },
+        { title: "View All Assistants", url: "/dashboard/doctor/all-assistants" },
         { title: "Edit", url: "/edit" },
       ],
     },

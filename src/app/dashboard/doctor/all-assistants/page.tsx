@@ -1,9 +1,10 @@
-import React from 'react'
+
+import AllAssistantsTable from '@/components/Doctors/AllAssistantsTable';
 
 export default function page() {
   return (
     <div>
-       View All Assistants
+      <AllAssistantsTable/>
     </div>
   )
 }
