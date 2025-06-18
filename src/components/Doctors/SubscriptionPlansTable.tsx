@@ -9,9 +9,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-
-
+} from "@/components/ui/dialog";
+import AddSubscriptionForm from "./AddSubscriptionForm";
 
 interface Plan {
   id: string;
@@ -24,6 +23,7 @@ interface Plan {
 
 export default function SubscriptionPlansTable() {
   const [plans, setPlans] = useState<Plan[]>([]);
+  const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
 
   useEffect(() => {
     const fetchPlans = async () => {
@@ -42,9 +42,17 @@ export default function SubscriptionPlansTable() {
     <div className="max-w-6xl mx-auto mt-10 p-4 bg-gray-100 rounded-md shadow-sm">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold">Subscription Plan Management</h2>
-        <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-          + Add New Plan
-        </button>
+
+        <Dialog>
+          <DialogTrigger asChild>
+            <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+              + Add New Plan
+            </button>
+          </DialogTrigger>
+          <DialogContent className="max-w-lg">
+            <AddSubscriptionForm onSuccess={() => location.reload()} />
+          </DialogContent>
+        </Dialog>
       </div>
 
       <div className="overflow-x-auto">
@@ -80,24 +88,38 @@ export default function SubscriptionPlansTable() {
                   )}
                 </td>
                 <td className="px-4 py-2 text-center">
-                  <button className="text-blue-600 hover:underline mr-3">
                   <Dialog>
-                    <DialogTrigger>Edit</DialogTrigger>
-                    <DialogContent>
+                    <DialogTrigger asChild>
+                      <button
+                        className="text-blue-600 hover:underline mr-3"
+                        onClick={() => setSelectedPlan(plan)}
+                      >
+                        Edit
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-lg">
                       <DialogHeader>
-                        <DialogTitle>Are you absolutely sure?</DialogTitle>
+                        <DialogTitle>Edit Subscription Plan</DialogTitle>
                         <DialogDescription>
-                          This action cannot be undone. This will permanently delete your account
-                          and remove your data from our servers.
+                          Update the plan details below.
                         </DialogDescription>
                       </DialogHeader>
+                      {selectedPlan && (
+                        <AddSubscriptionForm
+                          plan={selectedPlan}
+                          onSuccess={() => location.reload()}
+                        />
+                      )}
                     </DialogContent>
                   </Dialog>
+
+                  <button className="text-red-600 hover:underline">
+                    Delete
                   </button>
-                  <button className="text-red-600 hover:underline">Delete</button>
                 </td>
               </tr>
             ))}
+
             {plans.length === 0 && (
               <tr>
                 <td colSpan={6} className="text-center py-6 text-gray-500">
