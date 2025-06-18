@@ -7,7 +7,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import apiClient from "@/lib/axios";
-
+import { AxiosError } from "axios"; 
 
 
 const schema = z.object({
@@ -33,26 +33,26 @@ export default function AddAssistantForm() {
 
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = async (data: FormValues) => {
-    try {
-      setLoading(true);
-      const res = await apiClient.post("/doctor/assistants", data);
-      if (res.status === 201) {
-        toast.success("Assistant added successfully");
-        reset();
-      }
-    } catch (err: any) {
-      if (err.response?.status === 401) {
-        toast.error("Session expired. Please login again");
-        router.push("/login");
-      } else {
-        toast.error(err.response?.data?.message || "Failed to add assistant");
-      }
-    } finally {
-      setLoading(false);
+const onSubmit = async (data: FormValues) => {
+  try {
+    setLoading(true);
+    const res = await apiClient.post("/doctor/assistants", data);
+    if (res.status === 201) {
+      toast.success("Assistant added successfully");
+      reset();
     }
-  };
-
+  } catch (error) {
+    const err = error as AxiosError<{ message: string }>;
+    if (err.response?.status === 401) {
+      toast.error("Session expired. Please login again");
+      router.push("/login");
+    } else {
+      toast.error(err.response?.data?.message || "Failed to add assistant");
+    }
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto p-6 bg-white rounded shadow mt-10">
