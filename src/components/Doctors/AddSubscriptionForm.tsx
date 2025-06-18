@@ -85,7 +85,7 @@ export default function AddSubscriptionForm({ plan, onSuccess }: Props) {
   return (
     <form
       onSubmit={handleSubmit}
-      className=" space-y-4"
+      className="max-w-md mx-auto bg-white p-6 rounded-md shadow space-y-4"
     >
       <h2 className="text-2xl font-bold text-blue-600">
         {plan ? "Edit Plan" : "Add New Plan"}
