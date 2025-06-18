@@ -1,9 +1,10 @@
-import React from 'react'
+import AddSubscriptionForm from '@/components/Doctors/AddSubscriptionForm'
+
 
 export default function page() {
   return (
-    <div>
-     Subscriptions ADD
+     <div className="min-h-screen bg-gray-100 py-10">
+      <AddSubscriptionForm />
     </div>
   )
 }
