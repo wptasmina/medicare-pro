@@ -1,7 +1,6 @@
 "use client";
 import { AxiosError } from "axios"; 
 import apiClient from "@/lib/axios";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -103,7 +102,7 @@ export default function LoginForm() {
         Signin
       </button>
 
-      <p className="mt-6 text-sm text-center cursor-pointer">
+      {/* <p className="mt-6 text-sm text-center cursor-pointer">
         New to <span className="font-bold">Medicare</span>? Click here to
         <Link className="text-[#022dbb] font-bold ml-1" href={"/signup/admin"}>
           Register as a admin
@@ -119,7 +118,7 @@ export default function LoginForm() {
           Register as a Assistants
         </Link>
         .
-      </p>
+      </p> */}
     </form>
   );
 }
