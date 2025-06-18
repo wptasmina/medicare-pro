@@ -50,11 +50,11 @@ export default function Page() {
             </div>
             <div className="flex flex-col items-center justify-center gap-2 bg-green-50 aspect-video rounded-xl">
               <h2 className="text-black text-xl font-medium py-1 rounded-xl">Subscription plan</h2>
-              <p className="text-green-400 text-2xl font-medium">Free</p>
+              <p className="text-green-400 text-2xl font-normal">Free</p>
             </div>
             <div className="flex flex-col items-center justify-center gap-2 bg-red-50 aspect-video rounded-xl">
               <h2 className="text-black text-xl font-medium py-1 rounded-xl">Status</h2>
-              <p className="text-green-400 text-2xl font-medium">Active</p>
+              <p className="text-green-400 text-2xl font-normal">Active</p>
             </div>
           </div>
           {/* <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" /> */}
