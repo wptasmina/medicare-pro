@@ -46,7 +46,7 @@ export default function AssistantsList({ assistants }: AssistantsListProps) {
               <td className="px-6 py-4 whitespace-nowrap">{assistant.email}</td>
               <td className="px-6 py-4 whitespace-nowrap">
                 {Object.entries(assistant.permissions)
-                  .filter(([_, value]) => value)
+                  .filter(([, value]) => value)
                   .map(([key]) =>
                     key
                       .replace(/_/g, " ")
