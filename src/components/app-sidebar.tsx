@@ -54,8 +54,8 @@ const data = {
       icon: Bot,
       roles: ["doctor"],
       items: [
-        { title: "Add Assistants", url: "/add" },
-        { title: "Assistants", url: "/assistants" },
+        { title: "Add Assistants", url: "/dashboard/doctor/add-assistants" },
+        { title: "Assistants", url: "/dashboard/doctor/all-assistants" },
         { title: "Edit", url: "/edit" },
       ],
     },
