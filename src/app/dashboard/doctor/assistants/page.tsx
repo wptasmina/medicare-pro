@@ -1,10 +1,16 @@
-import AddAssistantForm from '@/components/Doctors/AddAssistantForm'
-import React from 'react'
+import AddAssistantForm from "@/components/Doctors/AddAssistantForm";
 
-export default function page() {
+
+
+export default function AssistantsPage() {
+  // Add your logic here if needed
+  const handleAdded = () => {
+    console.log('Assistant added');
+  };
+
   return (
-    <div>
-        <AddAssistantForm/>
-    </div>
-  )
+
+    <AddAssistantForm onAdded={handleAdded} />
+
+  );
 }
