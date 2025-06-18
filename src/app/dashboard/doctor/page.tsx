@@ -30,24 +30,34 @@ export default function Page() {
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
                   <BreadcrumbLink href="#">
-                    Building Your Application
+                    Medicare Your Application
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                  <BreadcrumbPage>Doctor Panel</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
           </div>
         </header>
+       <h2 className="text-green-400 text-3xl pl-4 font-bole py-6 rounded-xl">Summary</h2>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
           <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-            <div className="bg-muted/50 aspect-video rounded-xl" />
+            <div className="flex flex-col items-center justify-center gap-2 bg-purple-100 aspect-video rounded-xl">
+              <h2 className="text-black text-xl font-medium py-1 rounded-xl">Assistants</h2>
+              <p className="text-green-400 text-3xl font-medium">2</p>
+            </div>
+            <div className="flex flex-col items-center justify-center gap-2 bg-green-50 aspect-video rounded-xl">
+              <h2 className="text-black text-xl font-medium py-1 rounded-xl">Subscription plan</h2>
+              <p className="text-green-400 text-2xl font-medium">Free</p>
+            </div>
+            <div className="flex flex-col items-center justify-center gap-2 bg-red-50 aspect-video rounded-xl">
+              <h2 className="text-black text-xl font-medium py-1 rounded-xl">Status</h2>
+              <p className="text-green-400 text-2xl font-medium">Active</p>
+            </div>
           </div>
-          <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
+          {/* <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" /> */}
         </div>
       </SidebarInset>
     </SidebarProvider>

@@ -56,7 +56,7 @@ const data = {
       items: [
         { title: "Add Assistants", url: "/dashboard/doctor/add-assistants" },
         { title: "View All Assistants", url: "/dashboard/doctor/all-assistants" },
-        { title: "Edit", url: "/edit" },
+        // { title: "Edit", url: "/edit" },
       ],
     },
   ],

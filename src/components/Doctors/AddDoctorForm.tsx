@@ -75,7 +75,7 @@ export default function AddDoctorForm() {
   const onSubmit = async (data: AddDoctorFormValues) => {
     try {
       setLoading(true);
-      await apiClient.post("/doctors", data);
+      await apiClient.get("/doctors", data);
       toast.success("Doctor added successfully!");
       reset();
     } catch (err) {
