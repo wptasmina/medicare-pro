@@ -1,16 +1,11 @@
-import AddAssistantForm from "@/components/Doctors/AddAssistantForm";
-
+import AssistantsManager from "@/components/Doctors/AssistantsManager";
 
 
 export default function AssistantsPage() {
-  // Add your logic here if needed
-  const handleAdded = () => {
-    console.log('Assistant added');
-  };
-
   return (
-
-    <AddAssistantForm onAdded={handleAdded} />
-
+    <div>
+      <AssistantsManager />
+    </div>
   );
 }
+
